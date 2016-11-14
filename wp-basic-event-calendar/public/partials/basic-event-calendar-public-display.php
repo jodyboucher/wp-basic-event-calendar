@@ -5,11 +5,7 @@
  *
  * This file is used to markup the public-facing aspects of the plugin.
  *
- * @link       https://jodyboucher.com
  * @since      1.0.0
- *
- * @package    Wp_Basic_Event_Calendar
- * @subpackage Wp_Basic_Event_Calendar/public/partials
  */
 ?>
 

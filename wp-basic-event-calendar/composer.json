@@ -1,0 +1,25 @@
+{
+  "name": "jodyboucher/wp-basic-event-calendar",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0",
+  "homepage": "https://github.com/jodyboucher/wp-basic-event-calendar",
+  "authors": [
+    {
+      "name": "Jody Boucher",
+      "email": "jody@jodyboucher.com"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/jodyboucher/wp-basic-event-calendar/issues"
+  },
+
+  "require": {
+    "jodyboucher/basic-event-calendar": "dev-master"
+  },
+  "repositories": {
+    "repo-name": {
+      "type": "git",
+      "url": "git@github.com:jodyboucher/basic-event-calendar.git"
+    }
+  }
+}

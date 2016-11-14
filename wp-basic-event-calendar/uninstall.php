@@ -1,32 +1,26 @@
 <?php
 
 /**
- * Fired when the plugin is uninstalled.
+ * WordPress Basic Event Calendar widget: Uninstall
  *
- * When populating this file, consider the following flow
- * of control:
+ * The WordPress Basic Event Calendar widget is a very basic lightweight
+ * interface for displaying events on a monthly calendar view.
  *
- * - This method should be static
- * - Check if the $_REQUEST content actually is the plugin name
- * - Run an admin referrer check to make sure it goes through authentication
- * - Verify the output of $_GET makes sense
- * - Repeat with other user roles. Best directly by using the links/query string parameters.
- * - Repeat things for multisite. Once for a single site in the network, once sitewide.
+ * Uninstall code is fired when the Basic Event Calendar widget is uninstalled.
  *
- * This file may be updated more in future version of the Boilerplate; however, this is the
- * general skeleton and outline for how the file should work.
- *
- * For more information, see the following discussion:
- * https://github.com/tommcfarlin/WordPress-Plugin-Boilerplate/pull/123#issuecomment-28541913
- *
- * @link       https://jodyboucher.com
  * @since      1.0.0
- *
- * @package    Wp_Basic_Event_Calendar
+ * @version    1.0.0
  */
 
-// If uninstall not called from WordPress, then exit.
+namespace JodyBoucher\Wordpress\BasicEventCalendar;
+
+// If uninstall is not called from WordPress, exit!
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
-	exit;
+	exit();
 }
 
+$option_name = '_bec_event_data';
+delete_option( $option_name );
+
+// For site options in multi-site.
+delete_site_option( $option_name );

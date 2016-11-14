@@ -109,3 +109,8 @@ fabric.properties
 # =========================
 composer.phar
 vendor/
+
+# =========================
+# Node
+# =========================
+node_modules

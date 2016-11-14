@@ -1,0 +1,46 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "b1f4e8641bf71328d1fb536c8070149e",
+    "content-hash": "f507423282f6f056e923a4fe23f2072a",
+    "packages": [
+        {
+            "name": "jodyboucher/basic-event-calendar",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:jodyboucher/basic-event-calendar.git",
+                "reference": "aabedb7d6f6ea43930d6366e2928f4880138fd27"
+            },
+            "type": "library",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jody Boucher",
+                    "email": "jody@jodyboucher.com"
+                }
+            ],
+            "description": "A javascript library providing a basic lightweight interface for displaying events on a monthly calendar view.",
+            "homepage": "https://github.com/jodyboucher/basic-event-calendar",
+            "support": {
+                "issues": "https://github.com/jodyboucher/basic-event-calendar/issues"
+            },
+            "time": "2016-11-14 16:55:16"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "jodyboucher/basic-event-calendar": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

@@ -1,17 +1,6 @@
 <?php
 
-/**
- * The file that defines the core plugin class
- *
- * A class definition that includes attributes and functions used across both the
- * public-facing side of the site and the admin area.
- *
- * @link       https://jodyboucher.com
- * @since      1.0.0
- *
- * @package    Wp_Basic_Event_Calendar
- * @subpackage Wp_Basic_Event_Calendar/includes
- */
+namespace JodyBoucher\Wordpress\BasicEventCalendar;
 
 /**
  * The core plugin class.
@@ -23,11 +12,8 @@
  * version of the plugin.
  *
  * @since      1.0.0
- * @package    Wp_Basic_Event_Calendar
- * @subpackage Wp_Basic_Event_Calendar/includes
- * @author     Jody Boucher <jody@jodyboucher.com>
  */
-class Wp_Basic_Event_Calendar {
+class Basic_Event_Calendar {
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -35,7 +21,7 @@ class Wp_Basic_Event_Calendar {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      Wp_Basic_Event_Calendar_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      Basic_Event_Calendar_Loader $loader Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -44,7 +30,7 @@ class Wp_Basic_Event_Calendar {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      string    $plugin_name    The string used to uniquely identify this plugin.
+	 * @var      string $plugin_name The string used to uniquely identify this plugin.
 	 */
 	protected $plugin_name;
 
@@ -53,7 +39,7 @@ class Wp_Basic_Event_Calendar {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      string    $version    The current version of the plugin.
+	 * @var      string $version The current version of the plugin.
 	 */
 	protected $version;
 
@@ -69,7 +55,7 @@ class Wp_Basic_Event_Calendar {
 	public function __construct() {
 
 		$this->plugin_name = 'wp-basic-event-calendar';
-		$this->version = '1.0.0';
+		$this->version     = '1.0.0';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -83,10 +69,10 @@ class Wp_Basic_Event_Calendar {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - Wp_Basic_Event_Calendar_Loader. Orchestrates the hooks of the plugin.
-	 * - Wp_Basic_Event_Calendar_i18n. Defines internationalization functionality.
-	 * - Wp_Basic_Event_Calendar_Admin. Defines all hooks for the admin area.
-	 * - Wp_Basic_Event_Calendar_Public. Defines all hooks for the public side of the site.
+	 * - Basic_Event_Calendar_Loader. Orchestrates the hooks of the plugin.
+	 * - Basic_Event_Calendar_i18n. Defines internationalization functionality.
+	 * - Basic_Event_Calendar_Admin. Defines all hooks for the admin area.
+	 * - Basic_Event_Calendar_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -100,33 +86,38 @@ class Wp_Basic_Event_Calendar {
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wp-basic-event-calendar-loader.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-basic-event-calendar-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wp-basic-event-calendar-i18n.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-basic-event-calendar-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wp-basic-event-calendar-admin.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-basic-event-calendar-admin.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wp-basic-event-calendar-public.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-basic-event-calendar-public.php';
 
-		$this->loader = new Wp_Basic_Event_Calendar_Loader();
+		/**
+		 * The class responsible for defining the widget functionality.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'widgets/class-basic-event-calendar-widget.php';
+
+		$this->loader = new Basic_Event_Calendar_Loader();
 
 	}
 
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the Wp_Basic_Event_Calendar_i18n class in order to set the domain and to register the hook
+	 * Uses the Basic_Event_Calendar_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
 	 * @since    1.0.0
@@ -134,7 +125,7 @@ class Wp_Basic_Event_Calendar {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new Wp_Basic_Event_Calendar_i18n();
+		$plugin_i18n = new Basic_Event_Calendar_i18n();
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
@@ -149,10 +140,11 @@ class Wp_Basic_Event_Calendar {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new Wp_Basic_Event_Calendar_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = new Basic_Event_Calendar_Admin( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		$this->loader->add_action( 'widgets_init', $plugin_admin, 'register_widgets' );
 
 	}
 
@@ -165,7 +157,7 @@ class Wp_Basic_Event_Calendar {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new Wp_Basic_Event_Calendar_Public( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public = new Basic_Event_Calendar_Public( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
@@ -196,7 +188,7 @@ class Wp_Basic_Event_Calendar {
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @since     1.0.0
-	 * @return    Wp_Basic_Event_Calendar_Loader    Orchestrates the hooks of the plugin.
+	 * @return    Basic_Event_Calendar_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;

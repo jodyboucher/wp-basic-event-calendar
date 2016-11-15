@@ -50,7 +50,7 @@ class Basic_Event_Calendar_Public {
 	public function enqueue_styles() {
 
 		wp_enqueue_style(
-			'basic-event-calendar',
+			'basic-event-calendar-css',
 			plugin_dir_url( __FILE__ ) . 'css/basic-event-calendar.min.css',
 			array(),
 			$this->version,
@@ -66,11 +66,11 @@ class Basic_Event_Calendar_Public {
 	public function enqueue_scripts() {
 
 		wp_enqueue_script(
-			'basic-event-calendar',
+			'basic-event-calendar-script',
 			plugin_dir_url( __FILE__ ) . 'js/basic-event-calendar.min.js',
 			array( 'jquery' ),
 			$this->version,
-			false );
+			true );
 
 	}
 

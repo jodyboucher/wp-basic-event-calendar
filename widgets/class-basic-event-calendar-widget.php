@@ -68,14 +68,14 @@ class Basic_Event_Calendar_Widget extends WP_Widget {
 	public function __construct() {
 		$widget_options = array(
 			'classname'   => 'widget_basic_event_calendar',
-			'description' => __( 'Displays calendar of upcoming events', 'bec-domain' ),
+			'description' => __( 'Displays calendar of upcoming events', 'wp-basic-event-calendar' ),
 		);
 
 		$control_options = array();
 
 		parent::__construct(
 			'basic_event_calendar', // Widget base ID
-			__( 'Basic Event Calendar', 'bec-domain' ), // Widget name.
+			__( 'Basic Event Calendar', 'wp-basic-event-calendar' ), // Widget name.
 			$widget_options,
 			$control_options
 		);
@@ -103,7 +103,7 @@ class Basic_Event_Calendar_Widget extends WP_Widget {
 		$calendar_data  = $this->get_events_data( $in_events_url, $cache_seconds );
 		$script_content = $this->get_inline_script( $in_events_url, $calendar_data );
 
-		wp_add_inline_script( 'basicEventCalendar-script', $this->get_inline_script( $in_events_url, $script_content ), 'after' );
+		wp_add_inline_script( 'basic-event-calendar-script', $this->get_inline_script( $in_events_url, $script_content ), 'after' );
 
 		echo '<div class="bec-widget">';
 		if ( ! empty( $title ) ) {
@@ -163,7 +163,7 @@ class Basic_Event_Calendar_Widget extends WP_Widget {
 	 * @return void
 	 */
 	public function form( $instance ) {
-		$title      = ! empty( $instance['title'] ) ? $instance['title'] : __( self::DEFAULT_TITLE, 'bec-domain' );
+		$title      = ! empty( $instance['title'] ) ? $instance['title'] : __( self::DEFAULT_TITLE, 'wp-basic-event-calendar' );
 		$title_id   = $this->get_field_id( 'title' );
 		$title_name = $this->get_field_name( 'title' );
 

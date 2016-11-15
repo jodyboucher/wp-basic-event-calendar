@@ -110,6 +110,11 @@ class Basic_Event_Calendar {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'widgets/class-basic-event-calendar-widget.php';
 
+		/**
+		 * The class misc array functionality.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'utilities/class-array-helper.php';
+
 		$this->loader = new Basic_Event_Calendar_Loader();
 
 	}

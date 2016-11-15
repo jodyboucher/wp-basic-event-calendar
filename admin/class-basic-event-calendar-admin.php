@@ -66,6 +66,6 @@ class Basic_Event_Calendar_Admin {
 	 * @since    1.0.0
 	 */
 	public function register_widgets() {
-		register_widget( 'Basic_Event_Calendar_Widget' );
+		register_widget( 'JodyBoucher\Wordpress\BasicEventCalendar\Basic_Event_Calendar_Widget' );
 	}
 }
